@@ -117,6 +117,7 @@ export default {
     mounted(){
         this.drawLine();
         this.drawLine2();
+        this.drawLine3();
     },
     methods: {
         drawLine(){
@@ -171,7 +172,7 @@ export default {
                     //orient: 'vertical',
                     //top: 'middle',
                     left: 'center',
-                    bottom: 10,
+                    bottom: 20,
                     data: ['岗位', '项目', '灵工'],
                     icon: "circle"
                 },
@@ -180,6 +181,7 @@ export default {
                         name: '数据来源',
                         type: 'pie',
                         radius: ['50%', '70%'],
+                        center: [371, 200],
                         avoidLabelOverlap: false,
                         label: {
                             show: false,
@@ -215,7 +217,64 @@ export default {
             // 绘制图表
             myChart2.setOption(option);
         },
-        drawLine3(){},
+        drawLine3(){
+            let myChart3 = this.$echarts.init(document.getElementById('myChart3'))
+            var option = {
+                color: ['#73a0fa','#73deb3','#f08043','#f7c739'],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c}'
+                },
+                legend: {
+                    //orient: 'vertical',
+                    //top: 'middle',
+                    left: 'center',
+                    bottom: 20,
+                    data: ['待审核', '已驳回', '进行中', '已结束'],
+                    icon: "circle"
+                },
+                series: [
+                    {
+                        name: '数据来源',
+                        type: 'pie',
+                        radius: ['50%', '70%'],
+                        center: [371, 200],
+                        avoidLabelOverlap: false,
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '18',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            {value: 765, name: '待审核'},
+                            {value: 219, name: '已驳回'},
+                            {value: 457, name: '进行中'},
+                            {value: 220, name: '已结束'}
+                        ],
+                        itemStyle:{ 
+                            normal:{ 
+                            label:{ 
+                                show: true, 
+                                formatter: '{b} : {c}' 
+                                }, 
+                                labelLine :{show:true} 
+                            } 
+                        }
+                    }
+                ]
+            };
+            // 绘制图表
+            myChart3.setOption(option);
+        },
     }
 }
 </script>
