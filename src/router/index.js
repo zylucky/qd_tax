@@ -15,12 +15,12 @@ export const constantRoutes = [
             {
                 path: 'index',
                 name: 'index',
-                component: ()=> import('@/views/index/index')
+                component: ()=> import('@/views/index/index'),
+                meta: {
+                    title: 'DASHBOARD'
+                }
             }
         ],
-        meta: {
-            title: '首页'
-        }
     }
 ]
 

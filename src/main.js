@@ -12,6 +12,13 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 Vue.prototype.$echarts = echarts
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.title){
+    document.title = to.meta.title
+  }
+  next()
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
